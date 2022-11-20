@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+    <script src="./assets/script.js"></script>
+
+    <header>
+        <h1>Your Weather Dashboard</h1>
+    </header>
+
+<main>
+    <div class="col-12 col-md-3">
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search By City</h3>
+        <form id="search-form" class="card-body">
+          <label class="form-label" for="city">City</label>
+          <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+          <button type="submit" class="big-btn">Get Weather</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div id="city-buttons" class="card-body">
+          <button data-language="javascript" class="btn">Basel</button>
+          <button data-language="html" class="btn">Paris</button>
+          <button data-language="css" class="btn">Milan</button>
+          <button data-language="css" class="btn">Seoul</button>
+          <button data-language="css" class="btn">Taipei</button>
+          <button data-language="css" class="btn">Shenzhen</button>
+          <button data-language="css" class="btn">Cape Town</button>
+        </div>
+      </div>
+    </div>
+
+      </div>
+    </div>
+  </main>
+    <footer>
+        <p>Coded by Claudia Yile, 2022</p>
+    </footer>
+</body>
+</html>
