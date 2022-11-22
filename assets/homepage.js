@@ -13,42 +13,70 @@ THEN I am again presented with current and future conditions for that city
 // GIVEN a weather dashboard with form inputs
 
 // api routes 
+var weatherContainerEl = document.querySelector('#weather-container');
+var cityInputEl = document.querySelector('#city-search-input');
 
+var searchSubmitHandler = function(event) {
+    event.preventDefault();
+}
 
+var city = cityInputEl.value.trim();
 
+if(city){
+    getWeather(city);
+}
 
-var getWeather = function(user) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={926c276ea1495a672d9998464ba53a27"
-    };
   
+
+
+var getWeather = function(city) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={926c276ea1495a672d9998464ba53a27"
     fetch(apiUrl)
       .then(function(response) {
         if (response.ok) {
           console.log(response);
           response.json().then(function(data) {
             console.log(data);
-            displayRepos(data, user);
+            showWeather(data, user);
           });
         } else {
-          alert('Error: GitHub User Not Found');
+          alert("this city doesnt have weather sorry");
         }
       })
       .catch(function(error) {
-        alert("Unable to connect to GitHub");
+        alert("this city doesnt have weather...sorry");
       });
 
-  
-  var showWeather = function(repos, searchTerm) {
-    if (repos.length === 0) {
-      repoContainerEl.textContent = "No repositories found.";
-      return;
-    }
-}
-  
-    repoSearchTerm.textContent = searchTerm;
-  
-    // loop over repos
-    for (var i = 0; i < repos.length; i++) {
-      // format repo name
-      var repoName = repos[i].owner.login + "/" + repos[i].name;
+      fetch(apiUrl)
+      .then(function(response){
+          if(response.ok) {
+              console.log(response);
+              response.json().then(function(data){
+                console.log(data);
+                showWeather(data, city);
+              });
+          } else {
+              alert("this city doesnt have weather sorry");
+          }
+      })
     };
+  
+    
+      
+    var showWeather = function(city) {
+        if (city.length === 0) {
+            weatherContainerEl.textContent = "we don't have weather here? no solar system whatsoever lol";
+        }
+    }
+
+    var cityResultEl = document.createElement("div");
+    cityResultEl.classList = "list-item flex-row align-center";
+
+    var cityNameEl = document.createElement("span");
+    cityNameEl.textContent = city;
+
+    weatherContainerEl.append(cityResultEl);
+    weatherContainerEl.append(cityNameEl);
+
+    
+    cityInputEl.addEventListener("submit", searchSubmitHandler)
